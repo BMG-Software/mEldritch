@@ -1,0 +1,205 @@
+From David Pittman, 9.12.2014:
+
+	The UI system instantiates everything once at startup, and then just
+	changes the strings; I'm guessing your crash is happening from trying to
+	instantiate a new UI screen instead.
+
+	I didn't use those dialogs much in Eldritch's code, but there's an
+	example in Framework/src/checkforupdates.cpp of a YesNo dialog with a
+	callback on the yes button.
+
+---------------------------------------------------------------------------
+
+UI elements are not drawn on the call to Show*, only pushed. They are
+drawn on the next render update.
+
+---------------------------------------------------------------------------
+
+Tools/FilePacker creates directories and all when unpacking, but when
+packing only packs one file at a time and appends it to the target
+archive. So, in order to pack a directory, you need to pack each file in
+it, including the full path. On linux or mac this can be done with:
+
+find Textures -type f -exec Path/To/FilePacker {} eldritch-textures.cpk \;
+
+---------------------------------------------------------------------------
+
+Version is in Config/syncer.syncerconfig
+
+---------------------------------------------------------------------------
+
+initial config file is loaded in Projects/Eldritch/src/eldritchframework.cpp
+in void EldritchFramework::Initialize()
+
+FrameworkUtil::MinimalLoadConfigFiles( "Config/default.ccf" );
+
+The other config files and the remaining setup are defined there.
+
+Package files (*.cpk) are all added to packstream by using
+PackStream::StaticAddPackageFile. The content list is then read from the
+package an made available for future creation of package files. This means,
+creating a new PackStream searches through the contents list of all packages
+added with the aforementioned static method for the file to open.
+
+---------------------------------------------------------------------------
+
+prefs.cfg is handled in Projects/Eldritch/src/eldritchframework.cpp
+
+loaded in void EldritchFramework::LoadPrefsConfig()
+
+written in void EldritchFramework::WritePrefsConfig()
+
+---------------------------------------------------------------------------
+
+Meshes are created and animated in Blender, saved to an xml format using
+Projects/Eldritch/Tools/xmlmeshexport.py. The saved file is then converted
+to Eldritch's format using the MeshCompiler.
+
+---------------------------------------------------------------------------
+
+config vars:
+
+in Libraries/Core/src/configmanager.*
+
+m_Vars is a map of context name -> varmap
+varmap is a map if var name -> value
+
+New: push / merge config var environments, for mods.
+
+---------------------------------------------------------------------------
+
+Additional Debug Build Key bindings:
+
+R	Report
+Ctrl+Alt+Backspace	crash
+Shft+Alt+Backspace	crash by allocating all memory
+Alt + T is a travel to next level.
+Shift + Alt + T is a travel to prev level.
+
+---------------------------------------------------------------------------
+
+mEldritch and the tools must be built as a 32bit executable, otherwise
+havoc will ensue. This means that on Linux and MacOSX platforms you must
+also build SDL2 as a 32bit (or fat) binary.
+
+---------------------------------------------------------------------------
+
+Central event loop is in Libraries/Framework/src/framework3d.cpp:
+Framework3D::WindowProc() for windows
+Framework3D::TickSDLEvents() for SDL
+
+---------------------------------------------------------------------------
+
+Widget's OnTrigger() method is called on a mouse click by the screen's
+TickMouse() method. If you don't want to have you widget's stuff
+triggered, redefine the OnTrigger() method to empty and call the
+parent's OnTrigger() when the actions should be triggered.
+
+---------------------------------------------------------------------------
+
+For focusable widgets that are composed of multiple individually focusable
+subwidgets, like a list with a scrollbar, add the additional subwidgets to
+the owning screen using GetOwnerScreen()->AddWidget( subwidget )
+
+David writes (6.1.2015):
+
+	You might just need to call UIScreen::AddWidget() to register the scrollbar
+	widget with the list widget's containing screen. That will add it to the
+	screen's list of focus-able and render-able widgets, and it should work the
+	same as creating it in the screen. (And then the screen will manage the
+	lifetime of the widget, too.)
+
+	I think the only examples I have of creating a widget within a widget is
+	sliders and composites. Those were different because the whole thing
+	receives focus instead of the component widgets receiving focus separately.
+	So in those cases, I intentionally *didn't* AddWidget() them to the screen.
+
+But beware: The subwidgets get added _before_ the current widget. If you
+don't want that, use (the new) DeferredAddWidget(). Also, if you create the
+subwidgets in your InitializeFromDefinition method, be sure to call it only
+once or at least protect the creation of the subwidgets by enclosing them
+in an if()
+
+---------------------------------------------------------------------------
+
+new: PackStream now has PackageSpaces. Default PackageSpace is "". Package
+space names act as prefixes for unpacked file loads.
+
+---------------------------------------------------------------------------
+
+new UI widgets must be added to Libraries/UI/src/uiwidgets.h
+new UI Screens must be added to Libraries/UI/src/uiscreens.h
+Show*Dialog() static methods must be added to Libraries/UI/src/Common/uimanagercommon.*
+
+---------------------------------------------------------------------------
+
+For Voxel def loading into editor:
+- eldritchworld.cpp m_VoxelDefs, initialized in InitializeWorldDefConfig
+- factor ^^^^^^out into function LoadTheme( Map<>&)
+- voxel defs in world.config
+- [EldritchWorld] ->WorldDef%d -> NumVoxelDefs, VoxelDef%d, TileSet
+- EldritchWorld::Save/Load hat Versionsding
+- Themes vom Filename: EldritchWorldGen::GetThemeFromFilename
+- class EldritchTools muss auch Friend von EldritchWorldGen sein
+- Feld für Theme in EldritchWorld, wird beim Laden auch geladen, ansonsten via EldritchWorldGen::GetThemeFromFilename
+- level defs in world.config, InitialLevel game-wide. Make InitialLevel per Mod
+
+
+find worlds that actually have VoxelDefs:
+
+for i=0, EldritchWorld.NumWorldDefs-1 do
+	if EldritchWorld.WorldDef%i.NumVoxelDefs
+		EldritchWorld.WorldDef%i has voxel defs
+	end
+end
+
+voxel defs are then in:
+m_Framework->GetWorld()->m_WorldDefs[ EldritchWorld.WorldDef%i ]->m_VoxelDefs[]
+
+store EldritchWorld.WorldDef%i in room file for future reference
+
+---------------------------------------------------------------------------
+
+Actions:
+
+[SomeAction]
+ActionType=...
+...
+
+invokes an action from the engine. Everything after the ActionType= line are parameters
+
+Invoking Actions from Code:
+
+---------------------------------------------------------------------------
+
+Sending Messages from Code:
+
+// Create an event and add context parameters.
+// Event is assigned an automatic variable name.
+// see Code/Libraries/Workbench/src/wbevent.h
+WB_MAKE_EVENT( EventName, Owner );
+
+// Mark an event for being logged
+// see Code/Libraries/Workbench/src/wbevent.h
+WB_LOG_EVENT( EventName );
+
+// Set event parameter
+// see Code/Libraries/Workbench/src/wbevent.h
+// for valid types look at class WBEvent
+WB_SET_AUTO( EventName, Type, VarName, Value )
+
+// and then any one of
+// see Code/Libraries/Workbench/src/wbeventmanager.h
+#define WB_DISPATCH_EVENT( pEventManager, EventName, Recipient )
+#define WB_QUEUE_EVENT( pEventManager, EventName, Recipient )
+#define WB_QUEUE_EVENT_DELAY( pEventManager, EventName, Recipient, Delay )
+
+Beware: for EventName and VarName you don't pass HashedStrings as parameters,
+but the Names themselves. i.e. not this:
+
+STATICHASH( MyEvent );
+WB_MAKE_EVENT( sMyEvent );
+
+but this:
+
+WB_MAKE_EVENT( MyEvent );

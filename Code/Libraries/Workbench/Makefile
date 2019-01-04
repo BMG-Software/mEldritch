@@ -1,0 +1,32 @@
+# Makefile in Workbench
+
+LIB=$(LIB_WORKBENCH)
+
+CXXFILES=src/Actions/wbactioncomposite.cpp src/Actions/wbactiondestroy.cpp \
+	src/Actions/wbactionlog.cpp src/Actions/wbactionselector.cpp \
+	src/Actions/wbactionsendevent.cpp src/Actions/wbactionsetconfigvar.cpp \
+	src/Actions/wbactionsetvariable.cpp src/Actions/wbactiontriggerstatmod.cpp \
+	src/Actions/wbactionunqueueevent.cpp src/Components/wbcomplabel.cpp \
+	src/Components/wbcompowner.cpp src/Components/wbcomppemap.cpp \
+	src/Components/wbcompreactions.cpp src/Components/wbcompstate.cpp \
+	src/Components/wbcompstatmod.cpp src/Components/wbcomptransform.cpp \
+	src/Components/wbcompvariablemap.cpp src/PEs/wbpeabs.cpp src/PEs/wbpeadd.cpp \
+	src/PEs/wbpeand.cpp src/PEs/wbpebinaryop.cpp src/PEs/wbpeconditional.cpp \
+	src/PEs/wbpeconstantbool.cpp src/PEs/wbpeconstantfloat.cpp src/PEs/wbpeconstantint.cpp \
+	src/PEs/wbpeconstantstring.cpp src/PEs/wbpeconstantvector.cpp src/PEs/wbpediv.cpp \
+	src/PEs/wbpedot.cpp src/PEs/wbpegetentitybylabel.cpp src/PEs/wbpegetname.cpp \
+	src/PEs/wbpegetstate.cpp src/PEs/wbpegetvariable.cpp src/PEs/wbpelookup.cpp \
+	src/PEs/wbpemax.cpp src/PEs/wbpemin.cpp src/PEs/wbpemul.cpp src/PEs/wbpenormal.cpp \
+	src/PEs/wbpenot.cpp src/PEs/wbpenull.cpp src/PEs/wbpeor.cpp src/PEs/wbpeowner.cpp \
+	src/PEs/wbpepow.cpp src/PEs/wbpepushcontext.cpp src/PEs/wbpequeryactionstack.cpp \
+	src/PEs/wbperandombool.cpp src/PEs/wbperandomfloat.cpp src/PEs/wbperandomint.cpp \
+	src/PEs/wbpeselector.cpp src/PEs/wbpeself.cpp src/PEs/wbpesquare.cpp \
+	src/PEs/wbpestatmod.cpp src/PEs/wbpesub.cpp src/PEs/wbpeunaryop.cpp \
+	src/PEs/wbpexor.cpp src/wbaction.cpp src/wbactionfactory.cpp src/wbactionstack.cpp \
+	src/wbcomponentarrays.cpp src/wbcomponent.cpp src/wbentity.cpp src/wbevent.cpp \
+	src/wbeventmanager.cpp src/wbparamevaluator.cpp src/wbparamevaluatorfactory.cpp \
+	src/wbpatternmatching.cpp src/wbpe.cpp src/wbrule.cpp src/wbscene.cpp src/wbworld.cpp
+
+INCLUDES=$(INC_CORE) $(INC_MATH)
+
+include $(TOP)/make_lib.mk

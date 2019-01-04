@@ -1,0 +1,22 @@
+# CHANGELOG #
+
+Build 128
+
+- removed the unreversible "remove HUD" thing, replaced it by something
+  reversible. You can now remove the HUD (C-H) or hands and HUD (C-S-H),
+  and restore them again (S-H). Useful for screenshots or videos.
+- In the editor you can now select the voxel set you want to build your
+  level for. No need any more to go into the world you want to build a
+  level for. This is bound to F2, so F2 does not close the current subtool
+  any more. Instead F2, F3 and F4 now toggle their subtools.
+- changed save file extension so that meldritch save files don't clash with
+  eldritch save files. They're not backwards compatible.
+- changed log file name to meldritch-log.txt
+- the editor now remembers the location of the file you last saved or loaded.
+  Even across sessions.
+- added a new book in the library which will let you select world style mods
+  (sth like MoM) to play. Check out the SampleWorld mod for more info.
+- added PNG as valid format for textures in addition to the already supported
+  TGA and BMP.
+- added a world style mod. It's ugly and there's nothing to do but run through
+  it, but it illustrates how do make a new world for mEldritch.

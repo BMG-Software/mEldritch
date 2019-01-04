@@ -1,0 +1,105 @@
+#will try to load <Face>.ttf unless Filename is specified
+Face = "FreeSans"
+#optional
+Filename = "FreeSans.ttf"
+# pointsize for bitmap fonts. We assume a 110 dpi render target
+Size = 10
+# color for bitmap font
+ColorR = 255
+ColorG = 255
+ColorB = 255
+# size of bitmap to render to
+Width = 256
+Height = 128
+# whether to antialias or not, currently only true is supported
+Antialias = true
+# modification of alpha value. Final alpha = (alpha * AlphaScalar) ^ AlphaExponent
+AlphaScalar = 1
+AlphaExponent = 0.5
+
+NumLocales	= &
+@ Locale
+@@&			= "Loc_Latin"
+@@&			= "Loc_Polish"
+@@&			= "Loc_Hungarian"
+@@&			= "Loc_Cyrillic"
+
+[Loc_Latin]
+Tag					= "Latin"
+NumLanguages		= &
+@ Language
+@@&					= "BrazilianPortuguese"
+@@&					= "Danish"
+@@&					= "Dutch"
+@@&					= "English"
+@@&					= "Finnish"
+@@&					= "French"
+@@&					= "German"
+@@&					= "Italian"
+@@&					= "Spanish"
+@@&					= "Swedish"
+
+[Loc_Polish]
+Tag					= "Polish"
+NumLanguages		= &
+@ Language
+@@&					= "Polish"
+NumCodePointRanges	= &
+@ CodePointRange
+@@&Low				= "U+0020"
+@@^High 			= "U+007F"
+@@&Low				= "U+00A0"
+@@^High 			= "U+00FF"
+@@&Low				= "U+0009"	# Tab
+@@^High 			= "U+0009"
+@@&Low				= "U+0104"
+@@^High 			= "U+0107"
+@@&Low				= "U+0118"
+@@^High 			= "U+0119"
+@@&Low				= "U+0141"
+@@^High 			= "U+0144"
+@@&Low				= "U+015A"
+@@^High 			= "U+015B"
+@@&Low				= "U+0179"
+@@^High 			= "U+017C"
+@@&Low				= "U+201D"
+@@^High 			= "U+201E"
+
+[Loc_Hungarian]
+Tag					= "Hungarian"
+NumLanguages		= &
+@ Language
+@@&					= "Hungarian"
+NumCodePointRanges	= &
+@ CodePointRange
+@@&Low				= "U+0020"
+@@^High 			= "U+007F"
+@@&Low				= "U+00A0"
+@@^High 			= "U+00FF"
+@@&Low				= "U+0009"	# Tab
+@@^High 			= "U+0009"
+@@&Low				= "U+0150"	# Upper O with double acute accent
+@@^High 			= "U+0151"	# Lower O with double acute accent
+@@&Low				= "U+0170"	# Upper U with double acute accent
+@@^High 			= "U+0171"	# Lower U with double acute accent
+
+[Loc_Cyrillic]
+Tag					= "Cyrillic"
+Width				= 256
+Height				= 256
+NumLanguages		= &
+@ Language
+@@&					= "Russian"
+@@&					= "Ukrainian"
+NumCodePointRanges	= &
+@ CodePointRange
+@@&Low				= "U+0020"
+@@^High 			= "U+007F"
+@@&Low				= "U+00A0"
+@@^High 			= "U+00FF"
+@@&Low				= "U+0009"	# Tab
+@@^High 			= "U+0009"
+@@&Low				= "U+0400"
+@@^High 			= "U+045F"
+@@&Low				= "U+0490"	# Ghe with upturn (upper)
+@@^High 			= "U+0491"	# Ghe with upturn (lower)
