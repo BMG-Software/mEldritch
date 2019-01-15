@@ -71,8 +71,8 @@ endif
 ifeq ($(PLATFORM),Linux)
 BUILDFLAGS	=-DBUILD_LINUX=1 -DBUILD_SDL=1
 BACKEND		=GL
-SYSCXXFLAGS	=-m32
-SYSLDFLAGS	=-Wl,-R./ -m32
+SYSCXXFLAGS	=-m32 -no-pie
+SYSLDFLAGS	=-Wl,-R./ -m32 -no-pie
 SYSLIBS		=-lGL -lpthread -ldl -lalut -lopenal -lvorbisfile
 else ifeq ($(PLATFORM),MacOSX)
 CC			=MACOS_DEPLOYMENT_TARGET=10.6 gcc
