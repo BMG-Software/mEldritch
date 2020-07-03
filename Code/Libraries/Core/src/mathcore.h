@@ -75,12 +75,15 @@ inline float Attenuate( const float Distance, const float RadiusHalf ) { return 
 
 inline void CheckFloatingPointControlWord()
 {
+	// NOTE: stubbing this function for now. If brought back into build cross-compilation support will need retesting
+	/*
 #if BUILD_WINDOWS
 	uint control_word;
 	_controlfp_s( &control_word, 0, 0 );
 	//_controlfp_s(&control_word, _CW_DEFAULT, MCW_PC);	// If I ever need it, this resets the FPCW to default
 	PRINTF( "FPCW: 0x%08X\n", control_word );
 #endif
+	*/
 }
 
 inline float FastInvSqRt( float F )
