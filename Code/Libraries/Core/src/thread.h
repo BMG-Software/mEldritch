@@ -1,7 +1,7 @@
 #ifndef THREAD_H
 #define THREAD_H
 
-#include <Windows.h>
+#include <windows.h>
 
 typedef DWORD ( WINAPI *ThreadFunc )( void* );
 

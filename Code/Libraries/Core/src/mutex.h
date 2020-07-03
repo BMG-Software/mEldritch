@@ -1,7 +1,7 @@
 #ifndef MUTEX_H
 #define MUTEX_H
 
-#include <Windows.h>
+#include <windows.h>
 
 class Mutex
 {

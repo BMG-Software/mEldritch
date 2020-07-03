@@ -6,7 +6,7 @@
 #include <memory.h>	// For memset
 
 #if BUILD_WINDOWS_NO_SDL
-#include <Windows.h>
+#include <windows.h>
 #endif
 #if BUILD_SDL
 #include "SDL2/SDL.h"

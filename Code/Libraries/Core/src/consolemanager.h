@@ -10,7 +10,7 @@
 #include "simplestring.h"
 #include "keyboard.h"
 
-#include <Windows.h>
+#include <windows.h>
 
 class ConsoleManager
 {

@@ -6,7 +6,7 @@
 #if BUILD_WINDOWS_NO_SDL
 #define DIRECTINPUT_VERSION 0x0800
 
-#include <Windows.h>
+#include <windows.h>
 #include <dinput.h>
 #endif
 

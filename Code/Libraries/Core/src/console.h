@@ -2,7 +2,7 @@
 #define CONSOLE_H
 
 #include <stdio.h>
-#include <Windows.h>
+#include <windows.h>
 
 class Console
 {

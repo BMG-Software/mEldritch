@@ -2,7 +2,7 @@
 #define WINDOWWRAPPER_H
 
 #if BUILD_WINDOWS_NO_SDL
-#include <Windows.h>
+#include <windows.h>
 
 #define WM_NOTIFY_SIZE	( WM_USER + 0x0010 )
 // WM_NOTIFY_SIZE is used to notify a program of the intended size of a window prior to its creation.

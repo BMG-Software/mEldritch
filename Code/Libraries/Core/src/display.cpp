@@ -3,7 +3,7 @@
 #include "configmanager.h"
 
 #if BUILD_WINDOWS_NO_SDL
-#include <Windows.h>
+#include <windows.h>
 #endif
 
 #if BUILD_SDL

@@ -4,7 +4,7 @@
 #include "simplestring.h"
 #include "array.h"
 
-#include <Windows.h>
+#include <windows.h>
 
 class Thread;
 struct sockaddr_in;

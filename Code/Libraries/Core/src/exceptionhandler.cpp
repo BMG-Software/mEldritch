@@ -4,7 +4,7 @@
 #include "exceptionuploadlog.h"
 #include "allocator.h"
 
-#include <Windows.h>
+#include <windows.h>
 
 #if BUILD_SDL
 #include "SDL2/SDL.h"

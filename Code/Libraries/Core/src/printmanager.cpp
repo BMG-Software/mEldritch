@@ -8,7 +8,7 @@
 #include <stdarg.h>
 
 #if BUILD_WINDOWS
-#include <Windows.h>	// For OutputDebugString
+#include <windows.h>	// For OutputDebugString
 #endif
 
 #define STRINGBUFFERSIZE 2048

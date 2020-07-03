@@ -5,7 +5,7 @@
 #include "array.h"
 
 #if BUILD_WINDOWS
-#include <Windows.h>
+#include <windows.h>
 #endif
 
 #if BUILD_WINDOWS

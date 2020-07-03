@@ -4,7 +4,7 @@
 #include <stdarg.h>
 
 #if BUILD_WINDOWS
-#include <Windows.h>
+#include <windows.h>
 #endif
 
 #define ASSERTBUFFERSIZE 1024

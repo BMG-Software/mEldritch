@@ -5,7 +5,7 @@
 
 #include "simplestring.h"
 
-#include <Windows.h>
+#include <windows.h>
 
 typedef bool ( *ConsoleInputHandlerCallback )( uint );
 
