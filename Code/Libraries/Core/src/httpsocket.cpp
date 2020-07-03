@@ -1,5 +1,5 @@
 #include <winsock2.h>
-#include <WS2tcpip.h>
+#include <ws2tcpip.h>
 
 #include "core.h"
 #include "httpsocket.h"

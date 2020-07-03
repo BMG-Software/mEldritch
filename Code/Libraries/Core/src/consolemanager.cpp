@@ -4,7 +4,7 @@
 #include "configmanager.h"
 
 #include <stdio.h>
-#include <Windows.h>
+#include <windows.h>
 #include <memory.h>
 
 ConsoleManager* ConsoleManager::m_Instance = NULL;

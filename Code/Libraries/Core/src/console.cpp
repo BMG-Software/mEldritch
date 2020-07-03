@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <io.h>
 #include <fcntl.h>
-#include <Windows.h>
+#include <windows.h>
 
 Console* Console::m_Instance = NULL;
 
