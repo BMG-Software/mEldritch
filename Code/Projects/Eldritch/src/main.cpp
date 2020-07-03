@@ -7,7 +7,7 @@
 #include "allocator.h"
 
 #if BUILD_WINDOWS
-#include <Windows.h>
+#include <windows.h>
 #include <crtdbg.h>
 #endif
 

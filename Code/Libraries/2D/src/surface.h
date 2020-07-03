@@ -8,7 +8,7 @@ class Window;
 // Wraps a Windows DIB (or equivalent on other platforms
 
 #if BUILD_WINDOWS_NO_SDL
-#include <Windows.h>
+#include <windows.h>
 #endif
 
 #if BUILD_SDL

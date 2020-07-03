@@ -11,7 +11,7 @@
 #include "simplestring.h"
 #include "filestream.h"
 
-#include <Windows.h>
+#include <windows.h>
 #include <crtdbg.h>
 #include <stdio.h>
 #include <memory.h>
@@ -160,7 +160,7 @@ struct SFGProps
 	SimpleString			m_Face;
 	int						m_Height;
 	Array<SFGLocaleProps>	m_LocaleProps;
-	Array<SGlyphSubstitute>	m_GlyphSubstitutes;		// Not locale-specific. They should generally live in the private use area (U+E000–U+F8FF).
+	Array<SGlyphSubstitute>	m_GlyphSubstitutes;		// Not locale-specific. They should generally live in the private use area (U+E000ï¿½U+F8FF).
 
 	// For anti-aliased fonts
 	float					m_AlphaScalar;

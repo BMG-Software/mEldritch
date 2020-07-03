@@ -41,7 +41,7 @@ static const vval_t	kEmptyVoxelValue	= 0x00;
 static const vval_t	kInvalidVoxelValue	= 0xff;
 
 #if BUILD_WINDOWS_NO_SDL
-#include <Windows.h>	// For MessageBox
+#include <windows.h>	// For MessageBox
 #endif
 
 EldritchTools::EldritchTools()

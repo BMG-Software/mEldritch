@@ -31,7 +31,7 @@
 #include "wbcomponentarrays.h"
 
 #if BUILD_WINDOWS
-#include <Windows.h>	// For ShellExecute
+#include <windows.h>	// For ShellExecute
 #endif
 
 EldritchGame::EldritchGame()

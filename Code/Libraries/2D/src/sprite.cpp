@@ -8,7 +8,7 @@
 #include "configmanager.h"
 #include "simplestring.h"
 
-#include <Windows.h>
+#include <windows.h>
 
 #define BYTES 3
 

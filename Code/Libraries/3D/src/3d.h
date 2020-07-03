@@ -56,7 +56,7 @@ struct SRect
 // to avoid linking a main project into D3D
 
 #if BUILD_WINDOWS_NO_SDL
-#include <Windows.h>
+#include <windows.h>
 class IRenderer* CreateD3D9Renderer( HWND hWnd, bool Fullscreen );
 #endif
 

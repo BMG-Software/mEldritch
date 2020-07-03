@@ -16,7 +16,7 @@
 #include "keyboard.h"
 #include "allocator.h"
 
-#include <Windows.h>
+#include <windows.h>
 #include <crtdbg.h>
 
 Clock*			g_Clock = NULL;
